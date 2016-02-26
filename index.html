@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Backbone Collection Example</title>
+    <meta charset="UTF-8" />
+    <!-- bootstrap BOWER-->
+  	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- font-awesome BOWER-->
+  	<link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- jquery BOWER-->
+  	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- underscore BOWER-->
+    <script src="bower_components/underscore/underscore-min.js"></script>
+    <!-- backbone BOWER-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
+    <script src="js/lib/backboneLocalStorage.js"></script>
+    <!-- handlebars BOWER-->
+    <script src="bower_components/handlebars/handlebars.min.js"></script>
+    <!-- CUSTOM CSS -->
+  	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+  </head>
+  <body>
+
+
+
+    <div id="header">
+        <span class="title">Backbone Cellar</span>
+    </div>
+
+    <div id="sidebar"></div>
+
+    <div id="content">
+    <h2>Welcome to Backbone Cellar</h2>
+    <p>
+    This is a sample application part of of three-part tutorial showing how to build a CRUD application with Backbone.js.
+    </p>
+    </div>
+
+    <!-- Templates -->
+    <script type="text/template" id="tpl-header">
+    	<button class="new">New Wine</button>
+    </script>
+
+    <script type="text/template" id="tpl-wine-list-item">
+    	<a id="<%= id %>"class="sidebar-wine" href='<%= id %>'><%= name %></a>
+      <hr>
+    </script>
+
+    <script type="text/template" id="tpl-wine-details">
+
+        <div class="form-left-col">
+            <label>Id:</label>
+            <input type="text" id="wineId" name="id" value="<%= id %>" disabled />
+            <label>Name:</label>
+            <input type="text" id="name" name="name" value="<%= name %>" required/>
+            <label>Grapes:</label>
+            <input type="text" id="grapes" name="grapes" value="<%= grapes %>"/>
+            <label>Country:</label>
+            <input type="text" id="country" name="country" value="<%= country %>"/>
+            <label>Region:</label>
+            <input type="text" id="region" name="region"  value="<%= region %>"/>
+            <label>Year:</label>
+            <input type="text" id="year" name="year"  value="<%= year %>"/>
+            <button class="save">Save</button>
+            <button class="delete">Delete</button>
+        </div>
+
+        <div class="form-right-col">
+            <img height="300" src="pics/<%= picture %>"/>
+            <label>Notes:</label>
+            <textarea id="description" name="description"><%= description %></textarea>
+        </div>
+
+    </script>
+
+    <!-- json_wines -->
+    <script>
+      var json_wines = [
+          {
+            "name": "CHATEAU DE SAINT COSME",
+            "year": "2009",
+            "grapes": "Grenache / Syrah",
+            "country": "France",
+            "region": "Southern Rhone",
+            "description": "The aromas of fruit and spice give one a hint of the light drinkability of this lovely wine",
+            "picture": "saint_cosme.jpg"
+          },
+          {
+            "name": "LAN RIOJA CRIANZA",
+            "year": "2006",
+            "grapes": "Tempranillo",
+            "country": "Spain",
+            "region": "Rioja",
+            "description": "A resurgence of interest in boutique vineyards has opened the door for this excellent foray into the dessert wine market. Light and bouncy",
+            "picture": "lan_rioja.jpg"
+          },
+          {
+            "name": "MARGERUM SYBARITE",
+            "year": "2010",
+            "grapes": "Sauvignon Blanc",
+            "country": "USA",
+            "region": "California Central Cosat",
+            "description": "The cache of a fine Cabernet in ones wine cellar can now be replaced with a childishly playful wine bubbling over with tempting tastes of black cherry and licorice. This is a taste sure to transport you back in time.",
+            "picture": "margerum.jpg"
+          },
+          {
+            "name": "OWEN ROE EX UMBRIS",
+            "year": "2009",
+            "grapes": "Syrah",
+            "country": "USA",
+            "region": "Washington",
+            "description": "A one-two punch of black pepper and jalapeno will send your senses reeling. as the orange essence snaps you back to reality. Dont miss this award-winning taste sensation.",
+            "picture": "ex_umbris.jpg"
+          },
+          {
+            "name": "REX HILL",
+            "year": "2009",
+            "grapes": "Pinot Noir",
+            "country": "USA",
+            "region": "Oregon",
+            "description": "One cannot doubt that this will be the wine served at the Hollywood award shows, because it has undeniable star power. Be the first to catch the debut that everyone will be talking about tomorrow.",
+            "picture": "rex_hill.jpg"
+          }
+      ]
+    </script>
+
+
+    <!-- MVC Pack -->
+    <script src="js/models/model.js"></script>
+    <script src="js/collections/collection.js"></script>
+    <script src="js/views/modelview.js"></script>
+    <script src="js/views/appview.js"></script>
+    <!-- app.js -->
+    <script src="js/app.js">
+
+    </script>
+  </body>
+</html>
